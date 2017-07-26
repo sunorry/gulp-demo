@@ -21,8 +21,8 @@ gulp.task('build-js', () => {
 })
 
 gulp.task('clean', () => {
-    return gulp.src('dist/', {read: false})
-        .pipe(clean())
+    // return gulp.src('dist/', {read: false})
+    //     .pipe(clean())
 })
 // gulp.task('build-html', () => {
 //     return gulp.src('html/**/*.html')

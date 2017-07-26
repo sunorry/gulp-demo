@@ -1,15 +1,22 @@
-var fs = require('fs')
-var cheerio = require('cheerio')
-var cfg = require('./dist/js/stats.json')
-
-const folder = 'dist/html/'
-
-fs.readdir(folder, (err, files) => {
-    files.forEach(file => {
-        fs.readFile(folder + file, (err, data) => {
-            var $ = cheerio.load(data)
-            var scripts = $('script[src]').attr('src')
-            
-        })
-    })
+const fs = require('fs')
+const http = require('http');
+const Koa = require('koa');
+const app = new Koa();
+const common = require('koa-common');
+const gulp = require('gulp')
+require('./gulpfile');
+process.nextTick(() => {
+    gulp.start('prod')
+    gulp.start('default')
 })
+
+app.use(async function(ctx, next) {
+    if(ctx.url.startsWith('/js/')) {
+        const url = ctx.url.replace(/@.*\./, '.')
+        ctx.url = url
+    }
+    await next()
+});
+
+app.use(common.static(__dirname + '/dist'))
+app.listen(80);

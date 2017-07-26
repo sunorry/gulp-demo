@@ -1,7 +1,13 @@
 # gulp-demo
 
 1. npm install (建议 cnpm install)
-2. sudo gulp
-3. open dist/html
+2. sudo node index
+3. http://127.0.0.1/index.prod.html
 
-gulp prod 生成生产环境代码。
+## 模拟代理 JS
+生成两个 html
+
+1. index.prod.html
+2. index.dev.html
+
+访问 index.prod.html，请求带 version 的 JS，但是请求会代理到不带 version 的。

@@ -11,7 +11,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist/'),
         filename: '[name].js',
-        publicPath: './',
+        publicPath: '//127.0.0.1',
         // pathinfo: true
         // filename: '[name].js'
     },
@@ -45,9 +45,10 @@ module.exports = {
         //     minChunks: Infinity
         // }),
         new HtmlWebpackPlugin({
+            filename: 'index.dev.html',
             title: 'mnz'
         }),
-        //https://github.com/shaodahong/dahong/issues/8        
+        //https://github.com/shaodahong/dahong/issues/8
         // 用一个manifest来保存webpack runtime代码，虽然会多一个文件，但是我们可以用长效缓存的优点来掩盖这一切，因为webpack runtime很少，我们没有必要单独去加载这个js，可以内联到html的头部
         // new HtmlWebpackInlineAssetsPlugin({
         //     // head: '.(js|css)$',

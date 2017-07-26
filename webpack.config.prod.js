@@ -12,8 +12,8 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist/'),
-        filename: '[name].[chunkhash].js',
-        publicPath: './',
+        filename: '[name]@[chunkhash].js',
+        publicPath: '//127.0.0.1',
         // pathinfo: true
         // filename: '[name].js'
     },
@@ -36,7 +36,7 @@ module.exports = {
         new webpack.HashedModuleIdsPlugin(), // require 后面的变成了id(稳定的，而不是递增的数字)，而不是0,1,2,3
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: 'js/vendor.[chunkhash].js',
+            filename: 'js/vendor@[chunkhash].js',
             minChunks (module) {
                 return module.context && module.context.indexOf('node_modules') >= 0;
             }
@@ -46,8 +46,9 @@ module.exports = {
             minChunks: Infinity
         }),
         new HtmlWebpackPlugin({
+            filename: 'index.prod.html',
             title: 'mnz',
-            inlineSource: 'manifest.'
+            // inlineSource: 'manifest.'
         }),
         //https://github.com/shaodahong/dahong/issues/8        
         // 用一个manifest来保存webpack runtime代码，虽然会多一个文件，但是我们可以用长效缓存的优点来掩盖这一切，因为webpack runtime很少，我们没有必要单独去加载这个js，可以内联到html的头部

@@ -7,4 +7,4 @@ console.log(a)
 class Foo {
 
 }
-alert('build & watch success')
+alert('build success')
