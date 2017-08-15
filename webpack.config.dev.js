@@ -29,6 +29,12 @@ module.exports = {
             }
         }]
     },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+          '@': path.join(__dirname, 'src/js/utils')
+        }
+    },
     plugins: [
         // new CleanWebpackPlugin(path.resolve(__dirname, 'dist/')),
         //https://github.com/shaodahong/dahong/issues/8

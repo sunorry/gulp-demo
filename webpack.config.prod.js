@@ -17,6 +17,12 @@ module.exports = {
         // pathinfo: true
         // filename: '[name].js'
     },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+          '@': path.join(__dirname, 'src/js/utils')
+        }
+    },
     module: {
         rules: [{
             test: /\.js$/,
